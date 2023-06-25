@@ -3,3 +3,6 @@ openai
 fitz
 streamlit
 frontend
+libmupdf-dev
+mupdf-devel
+mupdf
