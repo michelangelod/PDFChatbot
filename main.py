@@ -45,8 +45,7 @@ if uploaded_file is not None and openai_api_key != "":
         qa_map_reduce = RetrievalQA.from_chain_type(
             llm=llm,
             chain_type="map_reduce", 
-            retriever = retriever, # 检索器，
-            verbose = True,
+            retriever = retriever, # 检索器
             )
     except Exception as e:
         st.warning("Exception occurred: {}".format(str(e)))
