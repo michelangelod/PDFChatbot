@@ -1,9 +1,9 @@
 ﻿alabaster
-anaconda-client==1.11.2
-anaconda-navigator==2.4.0
+anaconda-client
+anaconda-navigato
 anaconda-project 
 anyio 
-appdirs==1.4.4
+appdirs
 argon2-cffi 
 argon2-cffi-bindings
 arrow 
