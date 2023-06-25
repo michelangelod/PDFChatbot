@@ -5,10 +5,10 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import  RetrievalQA
-import os
 
 openai_api_key = st.text_input(label="Your Openai API Key...")
-os.environ['OPENAI_API_KEY'] = openai_api_key
+
+# os.environ['OPENAI_API_KEY'] = openai_api_key
 
 def read_pdf(pdf_file):
     with open(pdf_file, 'rb') as file:
@@ -35,8 +35,8 @@ if uploaded_file is not None and openai_api_key != "":
     docs = loader.load_and_split()
     # turn docs into embeddings (vector space)
     try:
-        embeddings = OpenAIEmbeddings()
-        llm = ChatOpenAI(temperature=0.0)
+        embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+        llm = ChatOpenAI(temperature=0.0,openai_api_key=openai_api_key)
         db = DocArrayInMemorySearch.from_documents(
             docs,
             embeddings,
