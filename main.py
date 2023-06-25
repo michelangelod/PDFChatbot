@@ -1,5 +1,5 @@
 import streamlit as st
-import fitz
+import PyPDF2
 from langchain.document_loaders import PyPDFLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import DocArrayInMemorySearch
@@ -11,13 +11,14 @@ openai_api_key = st.text_input(label="Your Openai API Key...")
 os.environ['OPENAI_API_KEY'] = openai_api_key
 
 def read_pdf(pdf_file):
-    doc = fitz.open(pdf_file)
-    text = ""
-    for page in doc:
-        text += page.get_text()
-    doc.close()
+    with open(pdf_file, 'rb') as file:
+        reader = PyPDF2.PdfFileReader(file)
+        num_pages = reader.getNumPages()
+        text = ""
+        for page_num in range(num_pages):
+            page = reader.getPage(page_num)
+            text += page.extractText()
     return text
-
 
 st.title("PDF Chatbot")
 uploaded_file = st.file_uploader("SELECT A PDF FILE", type=["pdf"])
