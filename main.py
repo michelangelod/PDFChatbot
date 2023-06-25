@@ -47,9 +47,10 @@ if uploaded_file is not None and openai_api_key != "":
             chain_type="map_reduce", 
             retriever = retriever, # 检索器，
             verbose = True,
-        )
-    except:
-        st.warning("Please Enter A Valid Key")
+            )
+    except Exception as e:
+        st.warning("Exception occurred: {}".format(str(e)))
+
 
 question = st.text_input("Question...")
 
