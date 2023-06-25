@@ -5,3 +5,4 @@ PyPDF2
 streamlit
 frontend
 mupdf
+langchain[docarray]
