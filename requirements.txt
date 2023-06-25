@@ -6,3 +6,4 @@ streamlit
 frontend
 mupdf
 langchain[docarray]
+tiktoken
