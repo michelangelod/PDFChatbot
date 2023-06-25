@@ -1,6 +1,6 @@
 langchain
 openai
-fitz
+PyPDF2
 streamlit
 frontend
 mupdf
